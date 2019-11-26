@@ -1,0 +1,78 @@
+.flash-alerts{
+	position: relative;
+	top: 100%;
+	left: 100%;
+	width: 30%;
+}
+
+body {
+	font-family: system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+	line-height: 1.4;
+	max-width: 800px;
+	margin: 0px auto;
+	padding: 0 10px;
+	color: #363636;
+	background: #fff;
+	text-rendering: optimizeLegibility;
+}
+
+#navbar {
+  overflow: hidden;
+  background-color: #ddd;
+  width: 800px;
+}
+
+#box {
+	background-color: #fff;
+	height: 75px;
+	width: 800px;
+}
+
+td, th {
+	padding: 6px;
+	text-align: center;
+}
+
+#navbar a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+#user_name {
+	float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+#navbar a:hover {
+  background-color: #efefef;
+  color: black;
+}
+
+#navbar a.active {
+  background-color: #363636;
+  color: white;
+}
+
+.content {
+  padding: 16px;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 800px;
+}
+
+.sticky + .content {
+  padding-top: 0px;
+}

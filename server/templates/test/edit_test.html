@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block title %}Edit test{% endblock %}
+
+{% block content %}
+	<h3>Edit test:</h3>
+	<br>
+	<form method = "POST">
+		<i>Test name:</i> <input type = "text" name = "name" value = "{{ test['name'] }}" required><br>
+		<i>Start time:</i> <input type = "datetime-local" name = "start_time" value = "{{ test['start_time'] }}" required><br>
+		<i>Duration:</i> <input type = "time" name = "duration" value = "{{ test['duration'] }}" required><br>
+		<input type = "submit" value = "Edit Test">
+	</form>
+{% endblock %}

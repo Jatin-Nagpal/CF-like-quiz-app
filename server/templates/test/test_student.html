@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ test["name"] }}{% endblock %}
+
+{% block content %}
+	<form method = "POST">
+		{% for question in questions %}
+			<b><i>Q. {{ question["question_id"] }})</i></b> {{ question["statement"] }}<br><br>
+			<input type = "radio" name = "{{ question['question_id'] }}" value = "A">{{ question["option_a"] }}<br>
+			<input type = "radio" name = "{{ question['question_id'] }}" value = "B">{{ question["option_b"] }}<br>
+			<input type = "radio" name = "{{ question['question_id'] }}" value = "C">{{ question["option_c"] }}<br>
+			<input type = "radio" name = "{{ question['question_id'] }}" value = "D">{{ question["option_d"] }}<br>
+			<br><br>
+		{% endfor %}
+		<input type = "submit" value = "End test">
+	</form>
+{% endblock %}

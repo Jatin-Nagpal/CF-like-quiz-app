@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}Standings{% endblock %}
+
+{% block content %}
+	<center><h3>Total marks: {{ test.questions_count }}</h3></center>
+	<table>
+		<tr>
+			<th>Position</th>
+			<th>Roll Number</th>
+			<th>Name</th>
+			<th>Marks Obtained</th>
+		</tr>
+		{% for student in results %}
+			<tr>
+				<td>{{ student["position"] }}</td>
+				<td>{{ student["name"] }}</td>
+				<td>{{ student["roll_number"] }}</td>
+				<td>{{ student["score"] }}</td>
+			</tr>
+		{% endfor %}
+	</table>
+{% endblock %}

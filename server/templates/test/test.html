@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ test["name"] }}{% endblock %}
+
+{% block content %}
+	<center><h3>Q. {{ question_id }}</h3><br></center>
+	<form method = "POST" id = "form_1">
+		<i>Statement:</i> <textarea name = "statement" cols = "30" rows = "10">{{ question['statement'] }}</textarea>
+		
+		<i>Option A:</i> <input type = "text" name = "option_a" value = "{{ question['option_a'] }}" required><br>
+		<i>Option B:</i> <input type = "text" name = "option_b" value = "{{ question['option_b'] }}" required><br>
+		<i>Option C:</i> <input type = "text" name = "option_c" value = "{{ question['option_c'] }}" required><br>
+		<i>Option D:</i> <input type = "text" name = "option_d" value = "{{ question['option_d'] }}" required><br>
+		
+		<i>Correct option:</i><br>
+		{% for option in "ABCD" %}
+			{% if question["correct_option"] == option %}
+				<input type = "radio" name = "correct_option" value = "{{ option }}" checked required>{{ option }}<br>
+			{% else %}
+				<input type = "radio" name = "correct_option" value = "{{ option }}" required>{{ option }}<br>
+			{% endif %}
+		{% endfor %}
+		<br>
+	</form>
+	{% if question_id <= test["questions_count"] %}
+		<button type = "submit" form = "form_1" value = "Edit">Edit</button>
+	{% elif question_id == test["questions_count"] + 1 %}
+		<button type = "submit" form = "form_1" value = "Create">Create</button>
+	{% endif %}
+	<br>
+	{% if question_id < test["questions_count"] %}
+		<a href = "{{ url_for('test.test', test_id = test['id'], question_id = question_id + 1) }}"><input type = "submit" value = "Next Question"></a>
+		<a href = "{{ url_for('test.test', test_id = test['id'], question_id = test['questions_count']) }}"><input type = "submit" value = "Go To Last"></a>
+	{% endif %}
+	{% if question_id <= test["questions_count"] %}
+		<td><a href = "{{ url_for('test.test', test_id = test['id'], question_id = test['questions_count'] + 1) }}"><input type = "submit" value = "Create Question"></a>
+	{% endif %}
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}Tests{% endblock %}
+
+{% block content %}
+	<h1>Tests</h1>
+	<table>
+		<tr>
+			<th>Test No.</th>
+			<th>Name</th>
+			<th>Start Day</th>
+			<th>Start Time</th>
+			<th>Length</th>
+			<th>Results</th>
+		</tr>
+		{% for test in all_tests %}
+			<tr>
+				<td>{{ test["id"] }}</td>
+				<td>{{ test["name"] }}</td>
+				<td>{{ test["start_day"] }}</td>
+				<td>{{ test["start_time"] }}</td>
+				<td>{{ test["duration"] }}</td>
+				<td><a href = "{{ url_for('test.standings', test_id = test['id']) }}">Final Standings</a></td>
+				{% if session["type"] == "admin" %}
+					<td><a href = "{{ url_for('test.edit_test', test_id = test['id']) }}">Edit</a></td>
+					<td><a href = "{{ url_for('test.test', test_id = test['id'], question_id = 1) }}">Enter</a></td>
+				{% else %}
+					<td><a href = "{{ url_for('test.test_student', test_id = test['id']) }}">Enter</a></td>
+				{% endif %}
+			</tr>
+		{% endfor %}
+	</table>
+{% endblock %}
